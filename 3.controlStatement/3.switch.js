@@ -1,7 +1,7 @@
 // Conditional Statement
 // switch
 // if else if else if else if ... else
-let day = 6;
+let day = 200;
 let dayName;
 
 if (day === 0) {
@@ -18,6 +18,8 @@ if (day === 0) {
   dayName = 'Saturday';
 } else if (day === 6) {
   dayName = 'Sunday';
+} else {
+  console.log('No corresponding day of the week.');
 }
 
 switch (day) {
@@ -42,4 +44,19 @@ switch (day) {
   case 6:
     dayName = 'Sunday';
     break;
+  default: // else = default
+    console.log('No corresponding day of the week.');
 }
+
+let condition = 'bad';
+let text;
+switch (condition) {
+  case 'okay':
+  case ' good':
+    text = 'very nice!';
+    break;
+  case 'bad':
+    text = 'so bad..';
+    break;
+}
+console.log(text);
