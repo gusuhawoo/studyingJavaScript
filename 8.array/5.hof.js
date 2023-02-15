@@ -91,3 +91,60 @@ console.log(result); // false
 // const products = [item1, item2, item3, item2];
 result = products.filter((item) => item.name === '🍪');
 console.log(result); // [ { name: '🍪', price: 3 }, { name: '🍪', price: 3 } ]
+
+// Map(make a new array)
+const nums = [1, 2, 3, 4, 5];
+result = nums.map((item) => item * 2);
+console.log(result); // [ 2, 4, 6, 8, 10 ]
+result = nums.map((item) => {
+  if (item % 2 === 0) {
+    return item * 2;
+  } else {
+    return item;
+  }
+});
+console.log(result); // [ 1, 4, 3, 8, 5 ]
+
+// Flatmap(make a new array)
+result = nums.map((item) => [1, 2]);
+console.log(result); // [ [ 1, 2 ], [ 1, 2 ], [ 1, 2 ], [ 1, 2 ], [ 1, 2 ] ]
+
+result = nums.flatMap((item) => [1, 2]);
+console.log(result);
+/*
+[
+  1, 2, 1, 2, 1,
+  2, 1, 2, 1, 2
+]
+*/
+
+result = ['dream', 'coding'].map((text) => text.split(''));
+console.log(result); // [ [ 'd', 'r', 'e', 'a', 'm' ], [ 'c', 'o', 'd', 'i', 'n', 'g' ] ]
+
+result = ['dream', 'coding'].flatMap((text) => text.split(''));
+console.log(result);
+/*
+[
+  'd', 'r', 'e', 'a',
+  'm', 'c', 'o', 'd',
+  'i', 'n', 'g'
+]
+*/
+
+//sort
+const texts = ['hi', 'abc'];
+texts.sort();
+console.log(texts); // [ 'abc', 'hi'
+
+const numbers = [0, 5, 4, 2, 1, 10];
+numbers.sort();
+console.log(numbers); // [ 0, 1, 10, 2, 4, 5 ]
+numbers.sort((a, b) => a - b);
+console.log(numbers); // [ 0, 1, 2, 4, 5, 10 ]
+
+// reduce
+result = [1, 2, 3, 4, 5].reduce((sum, value) => {
+  sum += value;
+  return sum;
+}, 0);
+console.log(result); // 15
