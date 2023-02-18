@@ -81,3 +81,86 @@ while (true) {
 2
 3
 */
+
+// [Symbol.iterator](): Iterator{ next(): {value. done}};
+// make a iterator (0~10 (num++ *2))
+// 1.
+// const multiple = {
+//   [Symbol.iterator]() {
+//     const max = 10;
+//     let num = 0;
+//     return {
+//       next() {
+//         return { value: num++ * 2, done: num > max };
+//       },
+//     };
+//   },
+// };
+// for (const num of multiple) {
+//   console.log(num);
+// }
+// /*
+// 1
+// 2
+// 3
+// 0
+// 2
+// 4
+// 6
+// 8
+// 10
+// 12
+// 14
+// 16
+// 18
+// */
+
+//2. function
+function makeIterable(initialValue, maxValue, callback) {
+  return {
+    [Symbol.iterator]() {
+      let num = initialValue;
+      return {
+        next() {
+          return { value: callback(num++), done: num > maxValue };
+        },
+      };
+    },
+  };
+}
+const multiple = makeIterable(0, 10, (n) => n * 2);
+for (const num of multiple) {
+  console.log(num);
+}
+/*
+1
+2
+3
+0
+2
+4
+6
+8
+10
+12
+14
+16
+18
+*/
+
+const single = makeIterable(0, 10, (n) => n);
+for (const num of single) {
+  console.log(num);
+}
+/*
+0
+1
+2
+3
+4
+5
+6
+7
+8
+9
+*/
