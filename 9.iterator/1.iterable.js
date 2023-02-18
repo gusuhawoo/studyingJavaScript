@@ -52,3 +52,32 @@ for (const item of array.entries()) {
 [ 1, 2 ]
 [ 2, 3 ]
 */
+
+// const iterator = array.values();
+// for (const item of iterator) {
+//   console.log(item);
+// }
+// /*
+// 1
+// 2
+// 3
+// */
+
+// const iterator = array.values();
+// console.log(iterator.next()); // { value: 1, done: false }
+// console.log(iterator.next().value); // 2
+// console.log(iterator.next().value); // 3
+// console.log(iterator.next().value); // undefined
+// console.log(iterator.next().done); // true
+
+const iterator = array.values();
+while (true) {
+  const item = iterator.next();
+  if (item.done) break;
+  console.log(item.value);
+}
+/*
+1
+2
+3
+*/
