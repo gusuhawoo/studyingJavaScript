@@ -37,3 +37,65 @@ async function fetchFruits() {
 }
 fetchFruits() //
   .then((fruits) => console.log(fruits)); // [ '🍌', '🍎' ]
+
+// ----------------------------------------------------------------------
+
+function fetchEgg(chicken) {
+  return Promise.resolve(`${chicken} => 🥚`);
+}
+
+function fryEgg(egg) {
+  return Promise.resolve(`${egg} => 🍳`);
+}
+
+function getChicken() {
+  return Promise.reject(new Error("You can't bring chicken."));
+  // return Promise.resolve(`🪴 => 🐓`);
+}
+
+// function makeFriedEgg() {
+//   return getChicken()
+//     .catch(() => '🐔')
+//     .then(fetchEgg)
+//     .then(fryEgg)
+//     .then(console.log); // 🐔 => 🥚 => 🍳
+// }
+
+// makeFriedEgg().then(console.log); // undefined
+
+// function makeFriedEgg() {
+//   return getChicken()
+//     .catch(() => '🐔')
+//     .then(fetchEgg)
+//     .then(fryEgg)
+//     .then((result) => {
+//       console.log(result);
+//       return result;
+//     }); // 🐔 => 🥚 => 🍳
+// }
+
+// makeFriedEgg().then(console.log); // 🐔 => 🥚 => 🍳
+
+// promise
+// function makeFriedEgg() {
+//   return getChicken()
+//     .catch(() => '🐔')
+//     .then(fetchEgg)
+//     .then(fryEgg);
+// }
+
+// makeFriedEgg().then(console.log); // 🐔 => 🥚 => 🍳
+
+// async
+async function makeFriedEgg() {
+  let chicken;
+  try {
+    chicken = await getChicken();
+  } catch {
+    chicken = '🐔';
+  }
+  const egg = await fetchEgg(chicken);
+  return fryEgg(egg);
+}
+
+makeFriedEgg().then(console.log); // 🐔 => 🥚 => 🍳
