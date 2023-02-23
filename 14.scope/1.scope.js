@@ -25,3 +25,25 @@ function sum(a, b) {
   console.log(a, b);
 }
 // console.log(a, b); // ReferenceError(app crashed): a is not defined
+
+// ----------------------------------------------------------------------
+
+{
+  const x = 1;
+  {
+    const y = 2;
+    console.log(x);
+  }
+  console.log(x);
+  // console.log(y); // // ReferenceError(app crashed): y is not defined
+}
+
+// ----------------------------------------------------------------------
+
+const text = 'global'; // global variable, global scope
+{
+  const text = 'inside block1'; // local variable, local scope
+  {
+    console.log(text); // inside block1
+  }
+}
